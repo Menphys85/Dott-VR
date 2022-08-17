@@ -1,0 +1,22 @@
+
+newmtl Standard8A745D
+Kd  0.5411765 0.454902 0.3647059
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Standard16321B
+Kd  0.08627451 0.1960784 0.1058824
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
