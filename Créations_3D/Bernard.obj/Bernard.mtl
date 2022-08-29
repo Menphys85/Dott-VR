@@ -1,0 +1,122 @@
+
+newmtl FlatFFFFFF0e2b1061-2791-4e5c-bb7f-06b56d7dfb96
+Kd  1 1 1
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 0
+map_Kd 0e2b1061-2791-4e5c-bb7f-06b56d7dfb96.png
+
+
+
+
+newmtl Standard040707
+Kd  0.01568628 0.02745098 0.02745098
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Phong000000
+Kd  0 0 0
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl PhongFFFFFF
+Kd  1 1 1
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl PhongD0977E
+Kd  0.8156863 0.5921569 0.4941176
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Cartoon000000
+Kd  0 0 0
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Cartoon767576
+Kd  0.4627451 0.4588235 0.4627451
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Standard000000
+Kd  0 0 0
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl StandardC3C3C3
+Kd  0.7647059 0.7647059 0.7647059
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Standard737373
+Kd  0.4509804 0.4509804 0.4509804
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl Standard353436
+Kd  0.2078431 0.2039216 0.2117647
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
