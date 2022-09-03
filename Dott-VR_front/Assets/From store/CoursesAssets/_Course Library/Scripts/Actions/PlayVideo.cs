@@ -128,7 +128,7 @@ public class PlayVideo : MonoBehaviour
 
     private void OnValidate()
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        var mat = new Material(Shader.Find("Standard"));
         videoMaterial = mat;
     }
 }
