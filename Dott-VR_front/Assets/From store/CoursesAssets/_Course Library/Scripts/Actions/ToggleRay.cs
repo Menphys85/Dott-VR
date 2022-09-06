@@ -49,4 +49,6 @@ public class ToggleRay : MonoBehaviour
         rayInteractor.enabled = value;
         directInteractor.enabled = !value;
     }
+    
+    
 }
