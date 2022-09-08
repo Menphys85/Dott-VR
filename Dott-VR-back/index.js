@@ -17,27 +17,16 @@ io.on('connection', function(socket){
     
     var currenPlayer ={};
     currenPlayer.name = 'unknow';
+    console.log("new connection Socket: " + socket.address);
     
-    socket.on('player connect', function (){
-        console.log(currenPlayer.name + 'recv: player connect');
-        for (var i=0; i<clients.length; i++){
-            var playerConnected = {
-                name:clients[i].name,
-                position: clients[i].position,
-                rotation: clients[i].rotation,
-                health:clients[i].health
-            };
-
-            socket.emit('other player connected', playerConnected);
-            console.log(currenPlayer.name +' emit: other player connected: '+ JSON.stringify(playerConnected))
-            
-        }
-        
-    });
+    JSON.stringify()
     
     socket.emit('message', {hello: 'world'});
-    socket.on('mesage', function(data){
-        console.log(data);
+    socket.on('getGames', function(){
+        console.log("Games list required by the game!");
+        socket.emit('gamesListReceived',   {games:[{name: "Game1"},
+                                            {name: "Game2"},
+                                            {name: "Game3"}]} );
     });
 } );
 
