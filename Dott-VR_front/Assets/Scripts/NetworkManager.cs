@@ -11,12 +11,15 @@ using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
 {
+    public GameManager gameManager;
     private SocketIOCommunicator sioCom;
     public GameObject connectionScreen;
     public GameObject connectionStatus;
     public GameObject gameLists;
     public Transform listContent;
     public GameObject gameBox;
+
+    private GameList gameList =null;
     
     // Start is called before the first frame update
     void Start()
@@ -40,11 +43,19 @@ public class NetworkManager : MonoBehaviour
         {
             Debug.LogWarning("Games list received from the server: " + payload);
             
-            GameList gameList = JsonUtility.FromJson(payload, typeof(GameList)) as GameList;
-            
-            gameList.games.ForEach((e) =>
+            gameList = JsonUtility.FromJson(payload, typeof(GameList)) as GameList;
+
+            gameList!.games.ForEach((game) =>
             {
-                GameObject.Instantiate(gameBox, listContent);
+                GameObject box = GameObject.Instantiate(gameBox, listContent);
+                
+                Debug.Log(box);
+                var GBScript = box.GetComponent("GameBox") as GameBox;
+                Debug.Log("script Game: " + GBScript.game);
+                GBScript.game = game;
+                
+                var tmp = box.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
+                tmp.text = game.name;
             });
                 
         });
