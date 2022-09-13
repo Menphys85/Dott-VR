@@ -45,6 +45,27 @@ io.on('connection', function(socket){
                 socket.emit('gamesListReceived', {games:games});
         });
     });
+
+    socket.on('saveEra', function(data) {
+        
+        console.log("SaveObjects received from the: ");
+        JSON.stringify(data);
+        console.log(data.grapableObjects.length);
+    });
+
+    socket.on('disconnect', function() {
+        console.log( 'Disconected!!!');
+        socket.broadcast.emit('other player disconnected');
+        // console.log(currentPlayer.name+' bcst: other player disconnected '+JSON.stringify(currentPlayer));
+        // for(var i=0; i<clients.length; i++) {
+        //     if(clients[i].name === currentPlayer.name) {
+        //         clients.splice(i,1);
+        //     }
+        // }
+    });
+    
 } );
+
+
 
 console.log('--- Server is running ---')
