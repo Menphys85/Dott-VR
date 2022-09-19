@@ -23,11 +23,8 @@ io.on('connection', function(socket) {
 
     // var currenPlayer = {};
     // currenPlayer.name = 'unknow';
+    
     console.log("new connection Socket: " + socket.address);
-    
-    
-
-    socket.emit('message', {hello: 'world'});
 
     socket.on('getGames', function () {
         console.log("Games list required by the game!");
@@ -67,7 +64,9 @@ io.on('connection', function(socket) {
         console.log("eras required for " + data.name);
         sqlCon.query("SELECT * FROM era WHERE `game_id` = " + data.id, function (err, result, fields) {
             if(err) throw err;
-            
+            result.forEach(era => {
+                era.isfree =false;
+            });
             socket.emit('erasReceived', {eras: result});
             
             
@@ -108,17 +107,7 @@ io.on('connection', function(socket) {
         });
         
     });
-    
-    // socket.on('getObjects', function(data){
-    //     sqlCon.query("SELECT * FROM grapable_object WHERE `era_id` = " + data.id, function (err, result, fields) {
-    //         if(err) throw err;
-    //
-    //         socket.emit('objectsReceived', {eras: result});
-    //
-    //
-    //     });
-    // });
-
+ 
     socket.on('disconnect', function () {
         console.log('Disconected!!!');
         socket.broadcast.emit('other player disconnected');
