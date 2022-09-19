@@ -17,11 +17,15 @@ public class CharacterSelection : MonoBehaviour
     public void LoadHuagui()
     {
         SceneManager.LoadScene("PastScene");
+        
     }
     
     public void LoadBernard()
     {
         SceneManager.LoadScene("PresentScene");
+        var gameManagerScript = gameManager.GetComponent<GameManager>();
+        var disponiblesEras = gameManagerScript.activeGame.eras;
+        gameManagerScript.activeEra = disponiblesEras.Find(e => e.name == "Present");
     }
     
     public void LoadLaverne()

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Models
 {
     [Serializable]
-    public class Game
+    public class EraList
     {
-        public int id;
-        public String name;
-        public DateTime last_save;
         public List<Era> eras;
-        public Game(){}
-
+        
+        public EraList(){}
     }
 }

@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
@@ -33,7 +34,6 @@ public class NetworkManager : MonoBehaviour
         {
             Debug.Log("Connected! Socket ID: " + sioCom.Instance.SocketID);
             sioCom.Instance.Emit("getGames");
-            sioCom.Instance.Emit("saveEra");
         });
         
         sioCom.Instance.On("disconnect", (payload) =>
@@ -61,23 +61,26 @@ public class NetworkManager : MonoBehaviour
             });
                 
         });
-        //Debug.Log("Etat du socket avant la coroutine de connection:" + sioCom.Instance.IsConnected());
         
+        sioCom.Instance.On("erasReceived", payload =>
+        {
+            
+            Debug.Log("Era received from the server");
+            var eraList = JsonUtility.FromJson<EraList>(payload);
+            gameManager.activeGame.eras = eraList.eras;
+
+        });
         
+        sioCom.Instance.On("GrapableObjectList", payload =>
+        {
+            Debug.Log("Grapable objects received from the server: " + payload);
+            var objList = JsonUtility.FromJson<GrapableObjectList>(payload);
+            gameManager.UpdateObjects(objList);
+        } );
         
-        //sioCom.Instance.Emit("saveEra" /*, eraJson*/);
         StartCoroutine(ConnectSocket());
-        
-        //Debug.Log("Etat du socket après la coroutine de connection:" + sioCom.Instance.IsConnected());
-        
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator ConnectSocket()
     {
@@ -105,4 +108,22 @@ public class NetworkManager : MonoBehaviour
         sioCom.Instance.Emit("saveEra", eraJson,false);
         
     }
+
+    public void GetErasOf(Game game)
+    {
+        var gameJson = JsonUtility.ToJson(game);
+        Debug.Log("GameJson sended: " + gameJson);
+        var result = new List<Era>();
+
+        sioCom.Instance.Emit("getErasOf", gameJson, false);
+    }
+
+    public void GetGrapableObjects(Era eraOfTheObject)
+    {
+        var data = "{\"eraId\":" + eraOfTheObject.id + "}";
+        Debug.Log("Sended to the server to get object: " + data);
+        sioCom.Instance.Emit("getGrapableObjects", data , false);
+        
+        
+    } 
 }

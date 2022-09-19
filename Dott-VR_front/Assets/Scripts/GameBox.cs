@@ -39,6 +39,7 @@ public class GameBox : MonoBehaviour
     {
         var txt = gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
         gameManager.GetComponent<GameManager>().activeGame = game;
+        gameManager.GetComponent<GameManager>().GetAreasOfTheActiveGame();
         
         gameList.SetActive(false);
         //characterSelection.SetActive(true);
