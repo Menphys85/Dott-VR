@@ -8,6 +8,8 @@ public class CharacterSelection : MonoBehaviour
     public GameObject gameManager;
     private GameManager _gameManagerScript;
 
+    public GameObject gameList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,9 @@ public class CharacterSelection : MonoBehaviour
     public void LoadHuagui()
     {
         SceneManager.LoadScene("PastScene");
+        var gameManagerScript = gameManager.GetComponent<GameManager>();
+        var disponiblesEras = gameManagerScript.activeGame.eras;
+        gameManagerScript.EnterInEra(disponiblesEras.Find(e => e.name == "Past"));
         
     }
     
@@ -25,12 +30,20 @@ public class CharacterSelection : MonoBehaviour
         SceneManager.LoadScene("PresentScene");
         var gameManagerScript = gameManager.GetComponent<GameManager>();
         var disponiblesEras = gameManagerScript.activeGame.eras;
-        gameManagerScript.activeEra = disponiblesEras.Find(e => e.name == "Present");
+        gameManagerScript.EnterInEra(disponiblesEras.Find(e => e.name == "Present"));
     }
     
     public void LoadLaverne()
     {
         SceneManager.LoadScene("FuturScene");
+        var gameManagerScript = gameManager.GetComponent<GameManager>();
+        var disponiblesEras = gameManagerScript.activeGame.eras;
+        gameManagerScript.EnterInEra(disponiblesEras.Find(e => e.name == "Futur"));
+    }
+
+    public void BackToGamelist()
+    {
+        gameList.SetActive(true);
     }
    
 }

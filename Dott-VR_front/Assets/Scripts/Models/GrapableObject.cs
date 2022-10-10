@@ -11,5 +11,8 @@ namespace Models
 
         public Vector3 position;
         public Quaternion rotation;
+
+        public int era_id;
+
     }
 }

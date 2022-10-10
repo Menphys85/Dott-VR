@@ -16,6 +16,7 @@ public class NetworkManager : MonoBehaviour
     public GameManager gameManager;
     private SocketIOCommunicator sioCom;
     public GameObject connectionScreen;
+
     public GameObject connectionStatus;
     public GameObject gameLists;
     public Transform listContent;
@@ -61,6 +62,20 @@ public class NetworkManager : MonoBehaviour
             });
                 
         });
+
+        sioCom.Instance.On("gameCreated", (payload)=> {
+            Debug.Log("Nouvelle partie reçue");
+            var game = JsonUtility.FromJson<Game>(payload);
+            GameObject box = GameObject.Instantiate(gameBox, listContent);
+
+            //Debug.Log(box);
+            var GBScript = box.GetComponent("GameBox") as GameBox;
+            //Debug.Log("script Game: " + GBScript.game);
+            GBScript.game = game;
+
+            var tmp = box.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
+            tmp.text = game.name;
+        });
         
         sioCom.Instance.On("erasReceived", payload =>
         {
@@ -75,10 +90,62 @@ public class NetworkManager : MonoBehaviour
         {
             Debug.Log("Grapable objects received from the server: " + payload);
             var objList = JsonUtility.FromJson<GrapableObjectList>(payload);
-            gameManager.UpdateObjects(objList);
+            //gameManager.UpdateObjects(objList);
+            gameManager.GenerateObjects(objList);
         } );
-        
+
+        sioCom.Instance.On("NpcsList", payload =>
+        {
+            Debug.Log("Npcs received from the server: " + payload);
+            var npcList = JsonUtility.FromJson<NpcList>(payload);
+            gameManager.GenerateNpcs(npcList);
+        });
+
+        sioCom.Instance.On("PlayerJoin", payload => {
+            Debug.Log(payload);
+            var era = JsonUtility.FromJson<Era>(payload);
+            Debug.Log("Player joined " + era.name);
+            gameManager.PlayerJoin(era);
+        });
+
+        sioCom.Instance.On("PlayerLeave", payload => {
+
+            var era = JsonUtility.FromJson<Era>(payload);
+            Debug.Log("Player Leaved " + era.name);
+            gameManager.PlayerLeft(era);
+        });
+
+        sioCom.Instance.On("reconnect", (payload) =>
+        {
+            if(gameManager.GetComponent<GameManager>().activeEra != null)
+            {
+                ConnectToEra(gameManager.GetComponent<GameManager>().activeEra);
+            }
+        });
+
+        sioCom.Instance.On("GrapableObjectReceived", payload => {
+            var obj = JsonUtility.FromJson<GrapableObject>(payload);
+            gameManager.SpawnObjectFromWC(obj);
+        });
+
         StartCoroutine(ConnectSocket());
+    }
+
+    public void UnsetIsNewForGame(Game game)
+    {
+        var gameJson = JsonUtility.ToJson(game);
+        sioCom.Instance.Emit("UnsetIsNewForGame", gameJson, false);
+    }
+
+    internal void DeleteGame(Game gameToDelete)
+    {
+        var gameJson = JsonUtility.ToJson(gameToDelete);
+        sioCom.Instance.Emit("DeleteGame", gameJson, false);
+    }
+
+    public void CreateNewGame()
+    {
+        sioCom.Instance.Emit("createGameRequired");
     }
 
 
@@ -109,6 +176,15 @@ public class NetworkManager : MonoBehaviour
         
     }
 
+    public void sendObjectTo(GrapableObject obj)
+    {
+        
+        var objJson = JsonUtility.ToJson(obj);
+
+        sioCom.Instance.Emit("objectToSend", objJson, false);
+        
+    }
+
     public void GetErasOf(Game game)
     {
         var gameJson = JsonUtility.ToJson(game);
@@ -122,8 +198,27 @@ public class NetworkManager : MonoBehaviour
     {
         var data = "{\"eraId\":" + eraOfTheObject.id + "}";
         Debug.Log("Sended to the server to get object: " + data);
-        sioCom.Instance.Emit("getGrapableObjects", data , false);
+        sioCom.Instance.Emit("getGrapableObjects", data , false);         
+    }
+
+    public void GetNpcs(Era eraOfTheObject)
+    {
+        var data = "{\"eraId\":" + eraOfTheObject.id + "}";
+        Debug.Log("Sended to the server to get Npc: " + data);
+        sioCom.Instance.Emit("getNpcs", data, false);
+    }
+
+    public void ConnectToEra(Era era)
+    {
+        Debug.LogWarning("Methode connect to Era lancées dans le netmanager pour '" + era.name + "'" );
+        var eraJson = JsonUtility.ToJson(era);
+        sioCom.Instance.Emit("connectToEra", eraJson, false);
         
-        
-    } 
+    }
+
+    public void ExitGame()
+    {
+        sioCom.Instance.Emit("ExitGame");
+    }
+
 }
