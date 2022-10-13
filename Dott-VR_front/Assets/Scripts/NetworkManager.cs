@@ -68,9 +68,8 @@ public class NetworkManager : MonoBehaviour
             var game = JsonUtility.FromJson<Game>(payload);
             GameObject box = GameObject.Instantiate(gameBox, listContent);
 
-            //Debug.Log(box);
             var GBScript = box.GetComponent("GameBox") as GameBox;
-            //Debug.Log("script Game: " + GBScript.game);
+
             GBScript.game = game;
 
             var tmp = box.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;

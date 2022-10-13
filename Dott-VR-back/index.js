@@ -244,7 +244,9 @@ io.on('connection', function(socket) {
                 var newGame = result2[0];
                 newGame.name = "Partie " + newGame.id;
 
-                sqlCon.query("UPDATE `game` SET `name`='"+ newGame.name +"' WHERE `id` =" + newGame.id , function (err3, result3, fields ) {
+                sqlCon.query("UPDATE `game` SET `name`='"+ newGame.name +"' WHERE `id` =" + newGame.id , 
+                    function (err3, result3, fields ) {
+                    
                     if (err3) throw err3;
                     CreateErasForGame(newGame.id);
                 });
