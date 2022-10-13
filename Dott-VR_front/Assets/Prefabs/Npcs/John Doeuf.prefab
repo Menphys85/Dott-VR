@@ -1082,11 +1082,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1174761369376546917}
   - component: {fileID: 4375541517138594048}
-  - component: {fileID: 4375541517138594078}
   - component: {fileID: 4375541517138594074}
   - component: {fileID: 4375541517138594076}
   - component: {fileID: 4375541517138594077}
   - component: {fileID: 4375541517138594075}
+  - component: {fileID: 4375541517138594078}
   - component: {fileID: 268854695845607100}
   - component: {fileID: 4375541517138594049}
   m_Layer: 0
@@ -1135,20 +1135,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &4375541517138594078
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947322578577799903}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.27
-  m_Height: 2.16
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.82, z: -0.12}
 --- !u!54 &4375541517138594074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1287,6 +1273,20 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!136 &4375541517138594078
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947322578577799903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.27
+  m_Height: 2.16
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.82, z: -0.12}
 --- !u!114 &268854695845607100
 MonoBehaviour:
   m_ObjectHideFlags: 0

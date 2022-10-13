@@ -178,18 +178,16 @@ io.on('connection', function(socket) {
 
         activeEra.isFree =false;
         io.to(roomName).emit("PlayerJoin", activeEra);
-        
     });
     
     socket.on('objectToSend', function (data){
         console.log("Object to send received for era " + data.era_id);
 
-        sqlCon.query("DELETE FROM grapable_object WHERE `era_id` = " + activeEra.id +" AND `name` = '" + data.name + "'", function (err, result, fields) {
+        sqlCon.query("DELETE FROM grapable_object WHERE `era_id` = " + activeEra.id +" " +
+            "AND `name` = '" + data.name + "'", function (err, result, fields) {
             if (err) throw err;
         });
-        
         updateGrapableObject(data.era_id, data);
-        //var obj = JSON.parse(data);
         io.to(roomName).emit("GrapableObjectReceived", data);
     });
     

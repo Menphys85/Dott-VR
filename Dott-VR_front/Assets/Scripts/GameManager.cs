@@ -12,22 +12,18 @@ public class GameManager : MonoBehaviour
     public Game activeGame = null;
     public Era activeEra = null;
 
+    public List<GameObject> objectsPrefabs;
+    public List<GameObject> npcsPrefabs;
+
+    public NetworkManager networkManager;
+
     public GameObject playerActivityUI;
     public WcObjectSpawner wcObjectSpawner;
 
     
 
-    public NetworkManager networkManager;
-
-    public List<GameObject> objectsPrefabs;
-    public List<GameObject> npcsPrefabs;
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+    void Start(){
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -42,8 +38,6 @@ public class GameManager : MonoBehaviour
         var gosGapObjs = GameObject.FindGameObjectsWithTag("GrapableObject");
         var grapableObjects = new List<GrapableObject>();
 
-        Debug.Log("fonction save lancée dans le GameManager pour " + gosGapObjs.Length + " objets.");
-
         foreach (var go in gosGapObjs)
         {
             var grapableObject = new GrapableObject();
@@ -52,8 +46,6 @@ public class GameManager : MonoBehaviour
             grapableObject.rotation = go.transform.rotation;
             grapableObjects.Add(grapableObject);
         }
-
-        this.activeEra.grapableObjects = grapableObjects;
 
 
         //création de la liste des Npcs
@@ -70,8 +62,8 @@ public class GameManager : MonoBehaviour
             npcs.Add(npc);
         }
 
+        this.activeEra.grapableObjects = grapableObjects;
         this.activeEra.npcs = npcs;
-
         networkManager.SaveEra(activeEra);
 
         if (activeGame.isNew)

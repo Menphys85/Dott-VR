@@ -30,7 +30,6 @@ public class ControlPannel : MonoBehaviour
 
     internal void ToogleButtons()
     {
-        Debug.Log("ToogleButton déclenché dans le controllpannel");
         button1.inverseState();
         button2.inverseState();
     }
