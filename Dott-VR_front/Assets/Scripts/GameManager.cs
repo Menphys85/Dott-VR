@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
 
         networkManager.sendObjectTo(grapObj);
         GameObject.Destroy(obj);
-        //this.SaveGame();
     }
 
     public void GetAreasOfTheActiveGame()

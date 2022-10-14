@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 08 sep. 2022 à 22:26
+-- Généré le : ven. 14 oct. 2022 à 23:56
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.4
 
@@ -14,8 +14,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `dott-db`
 --
-CREATE DATABASE IF NOT EXISTS `dott-db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `dott-db`;
 
 -- --------------------------------------------------------
 
@@ -29,18 +27,6 @@ CREATE TABLE `era` (
   `game_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `era`
---
-
-INSERT INTO `era` (`id`, `name`, `game_id`) VALUES
-(6, 'Present', 4),
-(7, 'Futur', 4),
-(8, 'Past', 5),
-(9, 'Present', 5),
-(10, 'Futur', 5),
-(11, 'past', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -50,24 +36,31 @@ INSERT INTO `era` (`id`, `name`, `game_id`) VALUES
 CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
+  `isNew` tinyint(1) DEFAULT NULL,
   `last_save` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `game`
---
-
-INSERT INTO `game` (`id`, `name`, `last_save`) VALUES
-(4, 'Partie 1', '2022-09-08 17:51:40'),
-(5, 'Partie 2', '2022-09-08 17:51:40');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prehensile_object`
+-- Structure de la table `grapable_object`
 --
 
-CREATE TABLE `prehensile_object` (
+CREATE TABLE `grapable_object` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `era_id` int(11) NOT NULL,
+  `position` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `rotation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`rotation`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `npc`
+--
+
+CREATE TABLE `npc` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `era_id` int(11) NOT NULL,
@@ -94,11 +87,18 @@ ALTER TABLE `game`
   ADD UNIQUE KEY `GameName_unique` (`name`);
 
 --
--- Index pour la table `prehensile_object`
+-- Index pour la table `grapable_object`
 --
-ALTER TABLE `prehensile_object`
+ALTER TABLE `grapable_object`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Era_foreignerKey` (`era_id`);
+
+--
+-- Index pour la table `npc`
+--
+ALTER TABLE `npc`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_idEra_npc` (`era_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -108,18 +108,24 @@ ALTER TABLE `prehensile_object`
 -- AUTO_INCREMENT pour la table `era`
 --
 ALTER TABLE `era`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT pour la table `prehensile_object`
+-- AUTO_INCREMENT pour la table `grapable_object`
 --
-ALTER TABLE `prehensile_object`
+ALTER TABLE `grapable_object`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=473;
+
+--
+-- AUTO_INCREMENT pour la table `npc`
+--
+ALTER TABLE `npc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -133,10 +139,14 @@ ALTER TABLE `era`
   ADD CONSTRAINT `game_foreignerkey` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `prehensile_object`
+-- Contraintes pour la table `grapable_object`
 --
-ALTER TABLE `prehensile_object`
+ALTER TABLE `grapable_object`
   ADD CONSTRAINT `Era_foreignerKey` FOREIGN KEY (`era_id`) REFERENCES `era` (`id`) ON DELETE CASCADE;
 
-
+--
+-- Contraintes pour la table `npc`
+--
+ALTER TABLE `npc`
+  ADD CONSTRAINT `fk_idEra_npc` FOREIGN KEY (`era_id`) REFERENCES `era` (`id`) ON DELETE CASCADE;
 COMMIT;

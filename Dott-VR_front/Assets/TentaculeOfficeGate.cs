@@ -9,14 +9,7 @@ public class TentaculeOfficeGate : MonoBehaviour
     public OfficeRightDoor rightDoor;
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         if(other.name == "Carte d'accès")
         {
             accessController.GetComponent<AudioSource>().Play();
@@ -26,10 +19,7 @@ public class TentaculeOfficeGate : MonoBehaviour
             }
             else
                 CloseDoors();
-            
-            
-        }
-        
+        }     
     }
 
     private void OpenDoors()
