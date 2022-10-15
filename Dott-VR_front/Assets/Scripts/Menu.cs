@@ -10,7 +10,9 @@ public class Menu : MonoBehaviour
     public GameObject networkManager;
     public GameManager gm;
     public GameObject player;
-    public GameObject interFace ; 
+    public GameObject interFace ;
+
+    private PercistentsDestructor destructor;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +33,11 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("Exit pressed");
         gm.ExitGame();
-        
-        
-        SceneManager.LoadScene("Connection");
 
-        GameObject.Destroy(networkManager);
-        GameObject.Destroy(gameManager);
-        GameObject.Destroy(player);
-        GameObject.Destroy(interFace);
+        destructor = GameObject.Find("PercistentsDestructor").GetComponent<PercistentsDestructor>();
+        destructor.DestroyPersistentsAndExit();
 
     }
+
+  
 }

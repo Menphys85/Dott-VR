@@ -191,10 +191,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1796771376124761638}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_detectCollisions
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1796771376124761638}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+        m_MethodName: set_detectCollisions
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls:
@@ -242,7 +266,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 1796771376691440132}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 1
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -290,9 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userInterface: {fileID: 0}
-  description: "On dirait que le receuil de recette de l'arri\xE8re grand tente du
-    docteur Fred a \xE9t\xE9 retrouv\xE9.  Il faudra que j'\xE9ssaye les escargot
-    \xE0 la mayonnaise..."
+  description: "On dirait que le recueil de recette de l'arri\xE8re-grand-tante du
+    docteur Fred a \xE9t\xE9 retrouv\xE9.  Il faudra que j'essaie les escargots \xE0
+    la mayonnaise..."
 --- !u!114 &2247396299420123696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991c69b8a1b6a444a9177914f77cf7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TintColor: {r: 1, g: 0.8530017, b: 0.015686274, a: 0.21176471}
+  m_TintColor: {r: 1, g: 0.9342357, b: 0.53459114, a: 0.5176471}
   m_TintOnHover: 1
   m_TintOnSelection: 0
-  m_TintRenderers: []
+  m_TintRenderers:
+  - {fileID: 1796771377275803727}

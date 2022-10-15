@@ -437,7 +437,7 @@ MonoBehaviour:
   userInterface: {fileID: 0}
   description: "J'ai toujours r\xE9v\xE9 d'avoir un objet hyper pr\xE9cieux pour
     devenir riche et enfin quitter ce maudit boulot. Jusque l\xE0, je garde la porte
-    du bureau de la tentacule pourpre. C'est suppos\xE9 \xEAtre gratifiant parce
+    du bureau de la Tentacule Pourpre. C'est suppos\xE9 \xEAtre gratifiant parce
     que je suis le seul \xE0 avoir le badge d'acc\xE8s... tu parles!"
 --- !u!114 &6968342306535230655
 MonoBehaviour:
@@ -543,8 +543,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToReceive: Parchemin
   userInterface: {fileID: 0}
-  verbalReaction: Yes! Super, je vais enfin devenir riche et quiter ce boulot minable!
-    \n Adieu!
+  verbalReaction: Yes! Super, je vais enfin devenir riche et quitter ce boulot minable!
+    Adieu!
+  "n\xE9gativeVerbalReaction": "Que voulez-vous que je fasses de \xE7a ?"
   objectToInstanciate: {fileID: 4464146418656041476, guid: 4796715582bdd064c8209563249c0845,
     type: 3}
   objectToHide: {fileID: 5002325818319558601}

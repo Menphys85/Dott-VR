@@ -10,7 +10,7 @@ public class TentaculeOfficeGate : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other) {
-        if(other.name == "Carte d'accès")
+        if(other.name == "Carte magnétique")
         {
             accessController.GetComponent<AudioSource>().Play();
             if (leftDoor.open == false)

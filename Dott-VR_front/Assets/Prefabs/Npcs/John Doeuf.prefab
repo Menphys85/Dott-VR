@@ -1166,7 +1166,7 @@ MonoBehaviour:
   userInterface: {fileID: 0}
   description: "Salut. D\xE9sol\xE9, vous auriez une id\xE9e de plat \xE0 pr\xE9parer
     pour George Washington? Je n'ai pas d'id\xE9e.. En attendant de trouver, je surveille
-    la d\xE9claration d'ind\xE9pendance, il ne faudrait pazs qu'on la vole."
+    la D\xE9claration d'ind\xE9pendance, il ne faudrait pas qu'on la vole."
 --- !u!114 &4375541517138594077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,9 +1316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToReceive: Livre
   userInterface: {fileID: 0}
-  verbalReaction: "Hummmm... int\xE9ressant. Je suis sur que George Washington adorera
-    les escargot \xE0 la mayaunaise! Je file en pr\xE9parer!"
-  "n\xE9gativeVerbalReaction": "Que voulez-vous que je fasses de \xE7a"
+  verbalReaction: "Hummmm... int\xE9ressant. Je suis s\xFBr que George Washington
+    adorera les escargots \xE0 la mayonnaise ! Je file en pr\xE9parer !"
+  "n\xE9gativeVerbalReaction": "Que voulez-vous que je fasses de \xE7a ?"
   objectToInstanciate: {fileID: 178230, guid: bfb5063a60f6ab946b7818053c46d9d2, type: 3}
   objectToHide: {fileID: 4571746064335310240}
   follower: {fileID: 268854695845607100}

@@ -982,6 +982,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23942876fd996034c89ed1b82cc8516f, type: 3}
+--- !u!1 &248225794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8185360580974831091, guid: 93d8143c36861c34d8d35a9462daefeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1459110746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &248225802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248225794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0aa91e5459b5954d91e45dc9af821e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headTransform: {fileID: 1773651207}
+  capsulePosition: {x: 0, y: 0, z: 0}
+  headPosition: {x: 0, y: 0, z: 0}
+--- !u!54 &248225810
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248225794}
+  serializedVersion: 2
+  m_Mass: 10000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
+--- !u!136 &248225811
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248225794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!1 &265282113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,6 +2763,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 521724642, guid: 61c32bc558d31c64699bcef8eb343947, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1903444327, guid: 61c32bc558d31c64699bcef8eb343947, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2769,7 +2824,7 @@ PrefabInstance:
     - target: {fileID: 6283063535612989119, guid: 61c32bc558d31c64699bcef8eb343947,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6283063535612989119, guid: 61c32bc558d31c64699bcef8eb343947,
         type: 3}
@@ -3013,9 +3068,6 @@ MonoBehaviour:
     grapableObjects: []
     npcs: []
     isFree: 0
-  playerActivityUI: {fileID: 1558759772}
-  wcObjectSpawner: {fileID: 0}
-  networkManager: {fileID: 167491193}
   objectsPrefabs:
   - {fileID: 2628205361876778061, guid: 3e491f484f0d73f4d80dfb4ee593095e, type: 3}
   - {fileID: 860428442234378681, guid: 795b06a0bbfc7904aa7acad3132cb5ed, type: 3}
@@ -3029,6 +3081,9 @@ MonoBehaviour:
   npcsPrefabs:
   - {fileID: 6969247447093986585, guid: ca121d9fbbf40ec4a9dfac3158d8ba4e, type: 3}
   - {fileID: 1947322578577799903, guid: 684622fc6f29af94bb459f8ee301e0e5, type: 3}
+  networkManager: {fileID: 167491193}
+  playerActivityUI: {fileID: 1558759772}
+  wcObjectSpawner: {fileID: 0}
 --- !u!4 &1065826819
 Transform:
   m_ObjectHideFlags: 0
@@ -4869,6 +4924,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 92301845}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1773651207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8185360581829966541, guid: 93d8143c36861c34d8d35a9462daefeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1459110746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1793227822
 GameObject:
   m_ObjectHideFlags: 0
@@ -5624,7 +5685,7 @@ Transform:
   - {fileID: 1338133927}
   - {fileID: 1463909539}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 25.414, z: 0}
 --- !u!1 &2123095996
 GameObject:
@@ -5659,7 +5720,7 @@ Transform:
   - {fileID: 793033557}
   - {fileID: 543450653061109097}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2123095998
 AudioSource:
