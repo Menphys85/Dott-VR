@@ -32,8 +32,7 @@ sqlCon.query("SELECT * FROM era", function (err, result, fields) {
 
 
 io.on('connection', function(socket) {
-
-
+    
     var roomName = null;
     var activeEra = null;
     
@@ -41,7 +40,6 @@ io.on('connection', function(socket) {
     console.log("");
 
     socket.on('getGames', function () {
-        console.log("Games list required by socket " + socket.id);
         var games = [];
         sqlCon.query("SELECT * FROM game", function (err, result, fields) {
             if (err) throw err;
@@ -51,8 +49,6 @@ io.on('connection', function(socket) {
             });
             
             socket.emit('gamesListReceived', {games: games});
-            console.log("  └─► " + games.length + " games sent.");
-            console.log("");
         });
     });
 
@@ -203,7 +199,6 @@ io.on('connection', function(socket) {
             if (err) throw err;
         });
     });
-    
     
     socket.on('disconnect', function () {
         console.log( "socket "+ socket.id + " Disconected!!!");

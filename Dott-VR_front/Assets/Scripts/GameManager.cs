@@ -20,9 +20,13 @@ public class GameManager : MonoBehaviour
     public GameObject playerActivityUI;
     public WcObjectSpawner wcObjectSpawner;
 
-    
+    public GameObject huaguiPic;
+    public GameObject bernardPic;
+    public GameObject lavernePic ;
 
-    
+
+
+
     void Start(){
         DontDestroyOnLoad(this.gameObject);
     }
@@ -324,15 +328,31 @@ public class GameManager : MonoBehaviour
     {
         
         TextMeshProUGUI tmp = playerActivityUI.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
+
+        
+
         string characterName;
 
         if (era.name == "Past")
+        {
             characterName = "Huagui";
+            
+            huaguiPic.SetActive(true);
+        }
+            
 
         else if (era.name == "Present")
+        {
             characterName = "Bernard";
+            bernardPic.SetActive(true);
+        }
+
         else
+        {
             characterName = "Laverne";
+            lavernePic.SetActive(true);
+        }
+            
 
         tmp.text = characterName + " a rejoint la partie.";
 
@@ -341,6 +361,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         playerActivityUI.SetActive(false);
+        huaguiPic.SetActive(false);
+        bernardPic.SetActive(false);
+        lavernePic.SetActive(false);
         yield return null;
     }
 
