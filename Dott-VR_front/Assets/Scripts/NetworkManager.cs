@@ -111,12 +111,13 @@ public class NetworkManager : MonoBehaviour
 
             var era = JsonUtility.FromJson<Era>(payload);
             Debug.Log("Player Leaved " + era.name);
-            gameManager.PlayerLeft(era);
+            if(gameManager != null && era.id != gameManager.activeEra.id)
+                gameManager.PlayerLeft(era);
         });
 
         sioCom.Instance.On("reconnect", (payload) =>
         {
-            if(gameManager.GetComponent<GameManager>().activeEra != null)
+            if(gameManager.GetComponent<GameManager>().activeEra.id != 0)
             {
                 ConnectToEra(gameManager.GetComponent<GameManager>().activeEra);
             }

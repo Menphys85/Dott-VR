@@ -374,12 +374,24 @@ public class GameManager : MonoBehaviour
         string characterName;
 
         if (era.name == "Past")
+        {
             characterName = "Huagui";
 
+            huaguiPic.SetActive(true);
+        }
+
+
         else if (era.name == "Present")
+        {
             characterName = "Bernard";
+            bernardPic.SetActive(true);
+        }
+
         else
+        {
             characterName = "Laverne";
+            lavernePic.SetActive(true);
+        }
 
         tmp.text = characterName + " a quité la partie.";
 
@@ -388,6 +400,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         playerActivityUI.SetActive(false);
+        huaguiPic.SetActive(false);
+        bernardPic.SetActive(false);
+        lavernePic.SetActive(false);
         yield return null;
     }
 

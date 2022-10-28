@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 6227931417975243655}
   - component: {fileID: 2297901883037240340}
   - component: {fileID: 2297901883037240339}
-  - component: {fileID: 4726436086848510318}
   - component: {fileID: 419243427010648970}
+  - component: {fileID: 4726436086848510318}
   m_Layer: 0
   m_Name: Chapeau de cowboy
   m_TagString: GrapableObject
@@ -167,7 +167,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -300,6 +300,23 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &419243427010648970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860428442234378681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c69b8a1b6a444a9177914f77cf7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0.33333334}
+  m_TintOnHover: 1
+  m_TintOnSelection: 0
+  m_TintRenderers:
+  - {fileID: 1220518844643833964}
 --- !u!114 &4726436086848510318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,19 +332,3 @@ MonoBehaviour:
   userInterface: {fileID: 0}
   description: "H\xE9h\xE9, un chapeau de cow-boy! Je suis s\xFBr qu'il m'irait parfaitement
     !"
---- !u!114 &419243427010648970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860428442234378681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991c69b8a1b6a444a9177914f77cf7d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  m_TintOnHover: 1
-  m_TintOnSelection: 0
-  m_TintRenderers: []

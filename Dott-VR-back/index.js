@@ -33,6 +33,11 @@ sqlCon.query("SELECT * FROM era", function (err, result, fields) {
 
 io.on('connection', function(socket) {
     
+    if(disponibleEras.length == 0 ){
+        setTimeout(() => {
+            console.log("Delayed for 3 second.");
+        }, "3000");
+    }
     var roomName = null;
     var activeEra = null;
     
@@ -163,6 +168,7 @@ io.on('connection', function(socket) {
         console.log("  └─► " + disponibleEras.length + " disponibles Eras" );
         
         activeEra = disponibleEras.find(e => e.id == data.id);
+        
         console.log("  └─► Era n°" + activeEra.id + " active: " + activeEra.name );
 
         //  retrait de l'Era de la liste des Eras disponibles 

@@ -18,10 +18,11 @@ public class PercistentsDestructor : MonoBehaviour
         netManager = GameObject.Find("NetworkManager");
         player = GameObject.Find("Player");
 
-        GameObject.Destroy(netManager);
+        
         GameObject.Destroy(gameManager);
         GameObject.Destroy(player);
         GameObject.Destroy(ui);
+        GameObject.Destroy(netManager);
 
         SceneManager.LoadScene("Connection");
     }
